@@ -10,21 +10,26 @@ import {
     SelectValue,
 } from "../components/ui/select";
 import { Card } from "../components/ui/card";
-import feesData from "../data/feesData.json"; // 👈 Import the JSON data
+import feesData from "../data/feesData.json";
 
 export const OrderFormSection = () => {
     const [selectedState, setSelectedState] = useState("");
     const [selectedCounty, setSelectedCounty] = useState("");
     const [selectedService, setSelectedService] = useState("");
     const [rate, setRate] = useState(0);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        propertyaddress: "",
+        parcelnumber: "",
+        ownername: "",
+        comments: "",
+    });
 
-    // Extract states from JSON keys
     const states = Object.keys(feesData);
-
-    // Extract counties based on selected state
     const counties = selectedState ? Object.keys(feesData[selectedState]) : [];
-
-    // Extract available services from the first county for the dropdown
     const services =
         selectedState && selectedCounty
             ? Object.keys(feesData[selectedState][selectedCounty])
@@ -39,7 +44,6 @@ export const OrderFormSection = () => {
                 "Docs Retrieval",
             ];
 
-    // Handle selection changes
     const handleStateChange = (value: string) => {
         setSelectedState(value);
         setSelectedCounty("");
@@ -57,8 +61,61 @@ export const OrderFormSection = () => {
         setSelectedService(value);
         if (selectedState && selectedCounty) {
             const countyData = feesData[selectedState][selectedCounty];
-            const fetchedRate = countyData[value] ?? 0;
-            setRate(fetchedRate);
+            setRate(countyData[value] ?? 0);
+        }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!selectedState || !selectedCounty || !selectedService) {
+            alert("Please select State, County, and Service.");
+            return;
+        }
+
+        const payload = {
+            ...formData,
+            state: selectedState,
+            county: selectedCounty,
+            service: selectedService,
+            rate,
+        };
+
+        try {
+            const res = await fetch("http://localhost:5000/send-order", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload),
+            });
+
+            const data = await res.json();
+
+            if (res.ok) {
+                alert("✅ Order submitted successfully!");
+                setSelectedState("");
+                setSelectedCounty("");
+                setSelectedService("");
+                setRate(0);
+                setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    company: "",
+                    propertyaddress: "",
+                    parcelnumber: "",
+                    ownername: "",
+                    comments: "",
+                });
+            } else {
+                alert("❌ Failed to submit order: " + data.message);
+            }
+        } catch (err) {
+            console.error(err);
+            alert("⚠️ Error submitting order. Please try again.");
         }
     };
 
@@ -71,12 +128,13 @@ export const OrderFormSection = () => {
                             Order Your Title Search Now
                         </h2>
                         <p className="text-xl text-muted-foreground">
-                            Get started in minutes - Fast, accurate title search reports delivered in 24–48 hours
+                            Get started in minutes — Fast, accurate title search reports
+                            delivered in 24–48 hours
                         </p>
                     </div>
 
                     <Card className="p-8">
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 {/* STATE */}
                                 <div className="space-y-2">
@@ -141,33 +199,48 @@ export const OrderFormSection = () => {
                                 <div className="flex justify-between items-center">
                                     <span className="font-semibold">Estimated Total:</span>
                                     <span className="text-2xl font-bold text-primary">
-                                        {rate > 0 ? `$${rate}` : "$0"}
-                                    </span>
+                    {rate > 0 ? `$${rate}` : "$0"}
+                  </span>
                                 </div>
                             </div>
 
                             {/* Contact Info */}
                             <div className="border-t pt-6 mt-6">
-                                <h3 className="text-lg font-semibold mb-4">
-                                    Your Information
-                                </h3>
+                                <h3 className="text-lg font-semibold mb-4">Your Information</h3>
                                 <div className="grid md:grid-cols-2 gap-4">
-                                    <div className="space-y-2">
-                                        <Label htmlFor="name">Full Name *</Label>
-                                        <Input id="name" placeholder="Your Name" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="email">Email *</Label>
-                                        <Input id="email" type="email" placeholder="your.email@example.com" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="phone">Phone</Label>
-                                        <Input id="phone" type="tel" placeholder="(555) 555-5555" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="company">Company</Label>
-                                        <Input id="company" placeholder="Company Name (Optional)" />
-                                    </div>
+                                    {[
+                                        "name",
+                                        "email",
+                                        "phone",
+                                        "company",
+                                        "propertyaddress",
+                                        "parcelnumber",
+                                        "ownername",
+                                        "comments",
+                                    ].map((field) => (
+                                        <div key={field} className="space-y-2">
+                                            <Label htmlFor={field}>
+                                                {field
+                                                    .charAt(0)
+                                                    .toUpperCase() + field.slice(1).replace(/([A-Z])/g, " $1")}
+                                            </Label>
+                                            <Input
+                                                id={field}
+                                                type={
+                                                    field === "email"
+                                                        ? "email"
+                                                        : field === "phone"
+                                                            ? "tel"
+                                                            : "text"
+                                                }
+                                                placeholder={field
+                                                    .replace(/([A-Z])/g, " $1")
+                                                    .replace(/^./, (str) => str.toUpperCase())}
+                                                value={formData[field as keyof typeof formData]}
+                                                onChange={handleInputChange}
+                                            />
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
 
