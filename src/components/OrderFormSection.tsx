@@ -86,7 +86,7 @@ export const OrderFormSection = () => {
         };
 
         try {
-            const res = await fetch("https://neuskaletitle-peach.vercel.app/send-order", {
+            const res = await fetch("https://neuskaletitle-peach.vercel.app/api/send-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
