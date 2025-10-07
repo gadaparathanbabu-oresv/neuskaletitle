@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
         // ✅ Email sending
         await transporter.sendMail({
-            from: `"Neuskale Title Orders" <laxmir22@10008867.brevosend.com>`, // ✅ Verified
+            from: `"Neuskale Title Orders" <laxmir22@gmail.com>`, // ✅ Verified
             to: "rathan@ventois.com", // where you’ll receive the order
             subject: `🧾 New Title Order - ${state}, ${county}`,
             html: `
