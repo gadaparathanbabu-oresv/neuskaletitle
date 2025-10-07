@@ -22,7 +22,7 @@ export default async function handler(req, res) {
         // ✅ Email sending
         await transporter.sendMail({
             from: `"contact from ${name}" <laxmir22@gmail.com>`, // ✅ Verified sender: user who submitted the form
-            to: "rathan@ventois.com",      // where you want to receive submissions
+            to: "info@neuskale.com",      // where you want to receive submissions
             subject: `📩 New Contact Form Submission: ${reason || "General Inquiry"}`,
             html: `
         <div style="font-family: Arial, sans-serif; background: #f9fafb; padding: 20px;">
