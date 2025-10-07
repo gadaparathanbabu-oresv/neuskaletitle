@@ -22,11 +22,11 @@ export default async function handler(req, res) {
         } = req.body;
 
         const transporter = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
+            host: "smtp-relay.brevo.com",
+            port: 587,
             auth: {
-                user: "bc20459e896634", // your Mailtrap user
-                pass: "c86304987268a3", // your Mailtrap password
+                user: "98b923001@smtp-brevo.com", // your Mailtrap user
+                pass: "zdTgcAwrFRYsQPXm", // your Mailtrap password
             },
         });
 
