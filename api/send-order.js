@@ -24,7 +24,6 @@ export default async function handler(req, res) {
         const transporter = nodemailer.createTransport({
             host: "smtp-relay.brevo.com",
             port: 587,
-            secure: false, // use TLS
             auth: {
                 user: "98b923001@smtp-brevo.com", // your Mailtrap user
                 pass: "zdTgcAwrFRYsQPXm", // your Mailtrap password
