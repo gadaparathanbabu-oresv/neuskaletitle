@@ -213,9 +213,9 @@ export const OrderFormSection = () => {
                                         "email",
                                         "phone",
                                         "company",
-                                        "propertyaddress",
-                                        "parcelnumber",
-                                        "ownername",
+                                        "property Address",
+                                        "parcel Number",
+                                        "owner Name",
                                         "comments",
                                     ].map((field) => (
                                         <div key={field} className="space-y-2">
