@@ -45,14 +45,14 @@ export const ContactSection = () => {
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+                <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
                     {/* Existing Contact Cards */}
                     <Card className="shadow-card border-border text-center">
                         <CardHeader>
                             <CardTitle className="text-foreground">Call Us</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="text-2xl font-bold text-primary">(555) 123-4567</div>
+                            <div className="text-2xl font-bold text-primary">+1 860-962-8444</div>
                             <p className="text-muted-foreground">
                                 Speak directly with a title search specialist
                             </p>
@@ -67,7 +67,22 @@ export const ContactSection = () => {
                             <CardTitle className="text-foreground">Email Us</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="text-lg font-semibold text-primary">info@neuskaletitle.com</div>
+                            <div className="text-lg font-semibold text-primary">info@neuskale.com</div>
+                            <p className="text-muted-foreground">
+                                Send us your title search requirements
+                            </p>
+                            <Button variant="professional" className="w-full">
+                                Send Email
+                            </Button>
+                        </CardContent>
+                    </Card>
+
+                    <Card className="shadow-card border-border text-center">
+                        <CardHeader>
+                            <CardTitle className="text-foreground">Email Us</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <div className="text-lg font-semibold text-primary">info@neuskale.com</div>
                             <p className="text-muted-foreground">
                                 Send us your title search requirements
                             </p>
