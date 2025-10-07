@@ -9,18 +9,21 @@ export const SampleReportSection = () => {
       description: "See our comprehensive owner and encumbrance report format",
       pages: "8-12 pages",
       icon: FileText,
+      file: "/Sample Search Report - Current Owner Search.pdf", // link to file in public folder
     },
     {
       title: "Two Owner Search Sample",
       description: "Example foreclosure search with complete chain of title",
       pages: "15-20 pages",
       icon: FileText,
+
     },
     {
-      title: "30-Year Full Search Sample",
+      title: "Full Search Sample",
       description: "Complete title history with all documents and exhibits",
       pages: "25-35 pages",
       icon: FileText,
+      file: "/Sample Search Report - Full Search.pdf", // link to file in public folder
     },
   ];
 
@@ -57,10 +60,12 @@ export const SampleReportSection = () => {
                   <div className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full inline-block">
                     {report.pages}
                   </div>
-                  <Button variant="outline" className="w-full">
-                    <Download className="mr-2 w-4 h-4" />
-                    Download PDF Sample
-                  </Button>
+                    <a href={report.file} download>
+                        <Button variant="outline" className="w-full mt-3">
+                            <Download className="mr-2 w-4 h-4" />
+                            Download PDF Sample
+                        </Button>
+                    </a>
                 </CardContent>
               </Card>
             );
