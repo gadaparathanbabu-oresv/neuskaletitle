@@ -35,7 +35,6 @@ export default async function handler(req, res) {
         // ✅ Email sending
         await transporter.sendMail({
             from: `"Neuskale Title Orders" <YOUR_VERIFIED_SENDER_EMAIL>`,
-            replyTo: email, // ✅ replies go to the user who filled the form
             to: "rathan@ventois.com", // where you’ll receive the order
             subject: `🧾 New Title Order - ${state}, ${county}`,
             html: `
