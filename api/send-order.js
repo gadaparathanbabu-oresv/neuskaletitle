@@ -32,7 +32,7 @@ export default async function handler(req, res) {
         });
 
         await transporter.sendMail({
-            from: `"${name}"`, // user's email used here
+            from: `"${name}" <${process.env.BREVO_USER}>`, // user's email used here
             to: "rathan@ventois.com", // where you want the form sent
             subject: `New Title Order - ${state}, ${county}`,
             html: `
