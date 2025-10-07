@@ -32,22 +32,23 @@ export default async function handler(req, res) {
         });
 
         await transporter.sendMail({
-            from: `"Title Orders" <orders@neuskale.com>`,
-            to: "rathan@ventois.com",
+            from: `"${name}" <${email}>`, // user's email used here
+            to: "rathan@ventois.com", // where you want the form sent
             subject: `New Title Order - ${state}, ${county}`,
-            text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Company: ${company}
-Property Address: ${propertyaddress}
-Parcel Number: ${parcelnumber}
-Owner Name: ${ownername}
-Comments: ${comments}
-State: ${state}
-County: ${county}
-Service: ${service}
-Rate: $${rate}
+            html: `
+        <h2>New Title Order Received</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Company:</strong> ${company}</p>
+        <p><strong>Property Address:</strong> ${propertyaddress}</p>
+        <p><strong>Parcel Number:</strong> ${parcelnumber}</p>
+        <p><strong>Owner Name:</strong> ${ownername}</p>
+        <p><strong>Comments:</strong> ${comments}</p>
+        <p><strong>State:</strong> ${state}</p>
+        <p><strong>County:</strong> ${county}</p>
+        <p><strong>Service:</strong> ${service}</p>
+        <p><strong>Rate:</strong> $${rate}</p>
       `,
         });
 
