@@ -35,7 +35,7 @@ export default async function handler(req, res) {
             from: `"Neuskale Title Orders" <YOUR_VERIFIED_SENDER_EMAIL>`,
             to: "rathan@ventois.com",
             subject: `New Title Order - ${state}, ${county}`,
-            text: `
+            html: `
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
