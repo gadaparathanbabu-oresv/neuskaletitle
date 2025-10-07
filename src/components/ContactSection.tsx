@@ -69,8 +69,8 @@ export const ContactSection = () => {
                         <CardContent className="space-y-4">
                             <div className="text-lg font-semibold text-primary">info@neuskale.com</div>
                             <p className="text-muted-foreground">
-                                Send us your title search requirements
-                            </p>
+                                Send your title search requirements
+                            </p><br/>
                             <Button variant="professional" className="w-full">
                                 Send Email
                             </Button>
@@ -79,12 +79,13 @@ export const ContactSection = () => {
 
                     <Card className="shadow-card border-border text-center">
                         <CardHeader>
-                            <CardTitle className="text-foreground">Email Us</CardTitle>
+                            <CardTitle className="text-foreground">Location</CardTitle>
                         </CardHeader>
                         <CardContent className="space-y-4">
-                            <div className="text-lg font-semibold text-primary">info@neuskale.com</div>
+                            <div className="text-lg font-semibold text-primary">360 Bloomfield Ave Suite 301,
+                                Windsor, CT 06095</div>
                             <p className="text-muted-foreground">
-                                Send us your title search requirements
+                                Send your title search requirements
                             </p>
                             <Button variant="professional" className="w-full">
                                 Send Email
