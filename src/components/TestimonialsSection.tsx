@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { Star, TrendingUp, Clock, Shield, Award, Users, CheckCircle2 } from "lucide-react";
 
 export const TestimonialsSection = () => {

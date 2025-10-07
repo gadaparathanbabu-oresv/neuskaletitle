@@ -1,5 +1,5 @@
 import { Target, Eye, ShoppingCart, Shield, Clock, Settings } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 
 export const AboutSection = () => {
   return (

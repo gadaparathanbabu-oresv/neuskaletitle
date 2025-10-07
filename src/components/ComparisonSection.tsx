@@ -1,6 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { Check, X, Crown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export const ComparisonSection = () => {
   const features = [

@@ -86,7 +86,7 @@ export const OrderFormSection = () => {
         };
 
         try {
-            const res = await fetch("/api/send-order", {
+            const res = await fetch("https://neuskaletitle-peach.vercel.app/api/send-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -199,8 +199,8 @@ export const OrderFormSection = () => {
                                 <div className="flex justify-between items-center">
                                     <span className="font-semibold">Estimated Total:</span>
                                     <span className="text-2xl font-bold text-primary">
-                    {rate > 0 ? `$${rate}` : "$0"}
-                  </span>
+                                        {rate > 0 ? `$${rate}` : "$0"}
+                                    </span>
                                 </div>
                             </div>
 
@@ -248,9 +248,14 @@ export const OrderFormSection = () => {
                                 Place Order – Secure Checkout
                             </Button>
                         </form>
+                        <br/>
+                        <p className="text-justify text-red-500">**The fees listed are based on online search availability. If any files require ground abstractor support, an additional abstractor fee will apply for conducting the search or retrieving documents. Any fee changes will be communicated, and your approval will be obtained before we proceed with the search.</p> <br/>
+                        <p className="text-justify text-red-500">**For judgments and liens, we provide online copies or docket sheets. If any judgment or lien copies are not available online and you require those copies, an additional abstractor fee will apply to obtain them. All such fees will be communicated in advance, and your approval will be obtained before we proceed with the search.</p>
                     </Card>
+
                 </div>
             </div>
+
         </section>
     );
 };

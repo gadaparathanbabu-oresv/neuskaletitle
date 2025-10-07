@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { FileSearch, Shield, Building2, Scale, Users, TrendingUp, Home, Briefcase } from "lucide-react";
 
 export const ServicesSection = () => {
@@ -69,7 +69,7 @@ export const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
+    <section id="services" className="py-2 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold mb-4">Title Search Products & Services</h2>
