@@ -1,10 +1,28 @@
+// server.mjs
+import express from "express";
+import cors from "cors";
+import bodyParser from "body-parser";
 import nodemailer from "nodemailer";
 
-export default async function handler(req, res) {
-    if (req.method !== "POST") {
-        return res.status(405).json({ message: "Method not allowed" });
-    }
+const app = express();
+const PORT = 5000;
 
+// ✅ Middleware setup
+app.use(cors());
+app.use(bodyParser.json());
+
+// ✅ Mailtrap SMTP configuration
+const transporter = nodemailer.createTransport({
+    host: "smtp-relay.brevo.com",
+    port: 587,
+    auth: {
+        user: "98b923001@smtp-brevo.com", // your Mailtrap user
+        pass: "zdTgcAwrFRYsQPXm", // your Mailtrap password
+    },
+});
+
+// ✅ Endpoint to handle form submission and send email
+app.post("/send-order", async (req, res) => {
     try {
         const {
             name,
@@ -21,39 +39,37 @@ export default async function handler(req, res) {
             rate,
         } = req.body;
 
-        const transporter = nodemailer.createTransport({
-            host: "smtp-relay.brevo.com",
-            port: 587,
-            secure: false, // use TLS
-            auth: {
-                user: "98b923001@smtp-brevo.com", // your Mailtrap user
-                pass: "zdTgcAwrFRYsQPXm", // your Mailtrap password
-            },
-        });
+        const mailOptions = {
+            from: `"Title Search Orders" <orders@neuskale.com>`,
+            to: "rathan@ventois.com", // 👈 replace with your recipient email
+            subject: `New Title Search Order – ${state}, ${county}`,
+            text: `
+New Title Search Order Received:
 
-        await transporter.sendMail({
-            from: `"Neuskale Title Orders" <YOUR_VERIFIED_SENDER_EMAIL>`,
-            to: "rathan@ventois.com",
-            subject: `New Title Order - ${state}, ${county}`,
-            html: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Company: ${company}
-Property Address: ${propertyaddress}
-Parcel Number: ${parcelnumber}
-Owner Name: ${ownername}
-Comments: ${comments}
-State: ${state}
-County: ${county}
-Service: ${service}
-Rate: $${rate}
-      `,
-        });
+👤 Name: ${name}
+📧 Email: ${email}
+📞 Phone: ${phone || "N/A"}
+🏢 Company: ${company || "N/A"}
 
-        res.status(200).json({ message: "Email sent successfully" });
+📍 State: ${state}
+🏛️ County: ${county}
+🧾 Service Type: ${service}
+💵 Estimated Rate: $${rate}
+
+🏠 Property Address: ${propertyaddress || "N/A"}
+🧾 Parcel Number / Tax ID: ${parcelnumber || "N/A"}
+👤 Owner Name: ${ownername || "N/A"}
+
+🗒️ Special Instructions / Comments:
+${comments || "None"}
+`,
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log("✅ Email sent successfully!");
+        res.status(200).json({ message: "Order email sent successfully!" });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Error sending email", error: error.message });
+        console.error("❌ Error sending email:", error);
+        res.status(500).json({ message: "Failed to send email", error: error.message });
     }
-}
+});
