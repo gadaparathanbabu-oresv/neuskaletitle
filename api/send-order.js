@@ -31,7 +31,10 @@ export default async function handler(req, res) {
         });
 
         await transporter.sendMail({
-            from: `"Title Orders" <orders@neuskale.com>`,
+            from: {
+                name: "Neuskale Title",
+                address: "laxmir22@10008867.brevosend.com", // verified
+            },
             to: "rathan@ventois.com",
             subject: `New Title Order - ${state}, ${county}`,
             text: `
