@@ -32,9 +32,13 @@ export default async function handler(req, res) {
         });
 
         await transporter.sendMail({
-            from: `"${name}" <${process.env.BREVO_USER}>`, // user's email used here
+            from: {
+                name: "Neuskale Title",
+                address: "laxmir22@10008867.brevosend.com",
+            },
+            replyTo: email, // ✅ replies go to the user
             to: "rathan@ventois.com", // where you want the form sent
-            subject: `New Title Order - ${state}, ${county}`,
+            subject: `New Title Order from ${name} - ${state}, ${county}`,
             html: `
   <div style="font-family: 'Segoe UI', Roboto, Arial, sans-serif; background-color: #f8f9fb; padding: 30px;">
     <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); overflow: hidden;">
