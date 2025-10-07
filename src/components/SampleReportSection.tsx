@@ -42,34 +42,35 @@ export const SampleReportSection = () => {
             report formats before you order - that's the Neuskale ETO advantage.
           </p>
         </div>
-
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {sampleReports.map((report, index) => {
-            const Icon = report.icon;
-            return (
-              <Card 
-                key={index}
-                className="hover:shadow-professional transition-smooth border-primary/20"
-              >
-                <CardContent className="pt-8 text-center space-y-4">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                    <Icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground">{report.title}</h3>
-                  <p className="text-muted-foreground text-sm">{report.description}</p>
-                  <div className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full inline-block">
-                    {report.pages}
-                  </div>
-                    <a href={report.file} download>
-                        <Button variant="outline" className="w-full mt-3">
-                            <Download className="mr-2 w-4 h-4" />
-                            Download PDF Sample
-                        </Button>
-                    </a>
-                </CardContent>
-              </Card>
-            );
-          })}
+        <div id="Download">
+            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+              {sampleReports.map((report, index) => {
+                const Icon = report.icon;
+                return (
+                  <Card
+                    key={index}
+                    className="hover:shadow-professional transition-smooth border-primary/20"
+                  >
+                    <CardContent className="pt-8 text-center space-y-4">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                        <Icon className="w-8 h-8 text-primary" />
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground">{report.title}</h3>
+                      <p className="text-muted-foreground text-sm">{report.description}</p>
+                      <div className="text-xs text-muted-foreground bg-muted px-3 py-1 rounded-full inline-block">
+                        {report.pages}
+                      </div>
+                        <a href={report.file} download>
+                            <Button variant="outline" className="w-full mt-3">
+                                <Download className="mr-2 w-4 h-4" />
+                                Download PDF Sample
+                            </Button>
+                        </a>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
         </div>
 
         {/* Why Our Reports Stand Out */}

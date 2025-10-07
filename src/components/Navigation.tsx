@@ -30,10 +30,20 @@ export const Navigation = () => {
             <a href="#contact" className="text-foreground hover:text-primary transition-smooth font-medium">
               Contact
             </a>
-            <Button variant="outline" size="sm">
-              Download Samples
-            </Button>
-            <Button variant="hero" size="sm">
+              <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                      const section = document.getElementById("Download");
+                      if (section) {
+                          section.scrollIntoView({ behavior: "smooth" });
+                      }
+                  }}
+              >
+                  Download Samples
+              </Button>
+
+              <Button variant="hero" size="sm">
               Try Free Report
             </Button>
           </div>
