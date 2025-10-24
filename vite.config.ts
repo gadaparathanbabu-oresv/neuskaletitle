@@ -1,26 +1,21 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
+import react from "@vitejs/plugin-react";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-    // Development server configuration
     server: {
-        host: "::",   // allows access from local network and IPv6
-        port: 8080,   // custom port
+        host: "::",
+        port: 8080,
     },
-
-    // Plugins
     plugins: [
-        react(),                            // React with SWC support
-        mode === "development" && componentTagger(), // run only in dev mode
-    ].filter(Boolean), // remove false values
-
-    // Path aliases
+        react(), // use esbuild version now, no SWC
+        mode === "development" && componentTagger(),
+    ].filter(Boolean),
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, "./src"), // '@' points to 'src'
+            "@": path.resolve(__dirname, "./src"),
         },
     },
 }));

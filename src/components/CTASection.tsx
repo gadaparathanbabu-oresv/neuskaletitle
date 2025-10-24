@@ -81,7 +81,7 @@ export const CTASection = () => {
                                 whileHover={{ scale: 1.1 }}
                             >
                                 <img
-                                    src="/public/Qualia-light.png"
+                                    src="/Qualia-light.png"
                                     alt="Partner 1"
                                     className="max-w-[250px] h-auto object-contain opacity-90 hover:opacity-100 transition-all duration-300"
                                 />
@@ -96,7 +96,7 @@ export const CTASection = () => {
                                 whileHover={{ scale: 1.1 }}
                             >
                                 <img
-                                    src="/public/ALTA_Logo.jpg"
+                                    src="/ALTA_Logo.jpg"
                                     alt="Partner 2"
                                     className="max-w-[250px] h-auto object-contain opacity-90 hover:opacity-100 transition-all rounded duration-300"
                                 />
