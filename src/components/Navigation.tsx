@@ -11,7 +11,7 @@ export const Navigation = () => {
               alt="Neuskale Title Services - Professional Title Search Company" 
               className="h-10 w-auto"
             />
-            <span className="text-xl font-bold text-foreground">Title Services</span>
+            {/*<span className="text-xl font-bold text-foreground">Title Services</span>*/}
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
@@ -30,12 +30,31 @@ export const Navigation = () => {
             <a href="#contact" className="text-foreground hover:text-primary transition-smooth font-medium">
               Contact
             </a>
-            <Button variant="outline" size="sm">
-              Download Samples
-            </Button>
-            <Button variant="hero" size="sm">
-              Try Free Report
-            </Button>
+              <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                      const section = document.getElementById("Download");
+                      if (section) {
+                          section.scrollIntoView({ behavior: "smooth" });
+                      }
+                  }}
+              >
+                  Download Samples
+              </Button>
+
+              <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                      const section = document.getElementById("Order");
+                      if (section) {
+                          section.scrollIntoView({ behavior: "smooth" });
+                      }
+                  }}
+              >
+                  Order Reports
+              </Button>
           </div>
         </div>
       </div>

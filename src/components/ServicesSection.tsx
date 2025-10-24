@@ -1,5 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileSearch, Shield, Building2, Scale, Users, TrendingUp, Home, Briefcase } from "lucide-react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { FileSearch, Shield, Building2, Scale, Users, Home, Briefcase, Globe } from "lucide-react";
 
 export const ServicesSection = () => {
   const titleSearchProducts = [
@@ -35,46 +35,52 @@ export const ServicesSection = () => {
     },
   ];
 
-  const industries = [
-    {
-      icon: TrendingUp,
-      title: "Real Estate Investors",
-      description: "Portfolio analysis, NPL/RPL searches, REO properties, tax sale research, and bulk order processing.",
-    },
-    {
-      icon: Building2,
-      title: "Title Companies",
-      description: "Nationwide refinance searches, modification reports, closing services, and title insurance support.",
-    },
-    {
-      icon: Scale,
-      title: "Attorneys & Legal",
-      description: "Foreclosure attorneys, bankruptcy searches, litigation support, and legal title research.",
-    },
-    {
-      icon: Briefcase,
-      title: "Lenders & Servicers",
-      description: "HELOC searches, hard money loans, reverse mortgage research, and loan underwriting support.",
-    },
-    {
-      icon: Users,
-      title: "Government Entities",
-      description: "Federal, state, and local government title searches for HUD, SBA, Fannie Mae, and Freddie Mac.",
-    },
-    {
-      icon: Home,
-      title: "Homeowners",
-      description: "Residential title searches, property research, estate planning, and homeowner title verification.",
-    },
+    const industries = [
+        {
+            icon: Shield, // changed from TrendingUp
+            title: "Title Insurance Companies",
+            description:
+                "Comprehensive title search services, risk analysis, bulk order processing, and support for underwriting decisions.",
+        },
+        {
+            icon: Scale, // changed from Building2
+            title: "Law Firms",
+            description:
+                "Legal support for real estate transactions, nationwide refinance searches, modification reports, and closing services.",
+        },
+        {
+            icon: Building2, // changed from Scale
+            title: "Banks",
+            description:
+                "Foreclosure searches, bankruptcy title research, lien analysis, and legal title verification for lending purposes.",
+        },
+        {
+            icon: Home, // changed from Briefcase
+            title: "Property Developers & Realtors",
+            description:
+                "Title verification, HELOC and hard money loan research, reverse mortgage assistance, and loan underwriting support.",
+        },
+        {
+            icon: Users, // kept the same
+            title: "Financial Institutions",
+            description:
+                "Title searches and documentation support for federal, state, and local compliance, including HUD, SBA, Fannie Mae, and Freddie Mac.",
+        },
+        {
+            icon: Globe, // changed from Home
+            title: "Governments",
+            description:
+                "Official title searches and record verification for public land, municipal, and federal projects, ensuring legal compliance.",
+        },
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
+    <section id="services" className="py-2 bg-muted/30">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold mb-4">Title Search Products & Services</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive property title search services for every need - from residential to commercial properties
+              Residential Title Searches Made Simple, Fast & Reliable
           </p>
         </div>
         
@@ -98,7 +104,7 @@ export const ServicesSection = () => {
         </div>
 
         <div>
-          <h3 className="text-2xl font-bold mb-8 text-center">Industries We Serve</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">Clients We Serve</h3>
           <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
             Providing property title search and due diligence services to professionals nationwide
           </p>

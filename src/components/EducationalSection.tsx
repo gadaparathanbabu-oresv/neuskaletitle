@@ -1,5 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { AlertTriangle, FileCheck, Shield, Home, Users, TrendingUp, BookOpen, Award } from "lucide-react";
 
 export const EducationalSection = () => {

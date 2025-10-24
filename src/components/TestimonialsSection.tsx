@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { Star, TrendingUp, Clock, Shield, Award, Users, CheckCircle2 } from "lucide-react";
 
 export const TestimonialsSection = () => {
@@ -119,29 +119,29 @@ export const TestimonialsSection = () => {
         </div>
 
         {/* Trust Bar */}
-        <div className="mt-16 text-center">
-          <p className="text-muted-foreground mb-8">
-            Join 500+ satisfied clients who tried our service first through the ETO model
-          </p>
-          <div className="flex flex-wrap justify-center gap-8 items-center">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">287+</div>
-              <div className="text-sm text-muted-foreground">5-Star Reviews</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">98%</div>
-              <div className="text-sm text-muted-foreground">Client Retention</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">10K+</div>
-              <div className="text-sm text-muted-foreground">Searches Completed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">24-48hr</div>
-              <div className="text-sm text-muted-foreground">Avg Turnaround</div>
-            </div>
+          <div className="mt-16 text-center bg-gradient-to-r from-indigo-50 via-white to-blue-50 py-16 rounded-3xl shadow-lg">
+              <p className="text-muted-foreground mb-10 text-lg">
+                  Join <span className="font-semibold text-primary">500+ satisfied clients</span> who tried our service first through the <span className="font-semibold">ETO model</span>
+              </p>
+
+              <div className="flex flex-wrap justify-center gap-8 items-center">
+                  {[
+                      { value: "15+", label: "years in Industry Experience" },
+                      { value: "20+", label: "states" },
+                      { value: "5000+", label: "Title Searches Completed" },
+                      { value: "25+", label: "Team Members" },
+                  ].map((item, i) => (
+                      <div
+                          key={i}
+                          className="bg-white/70 backdrop-blur-md px-8 py-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
+                      >
+                          <div className="text-4xl font-bold text-primary mb-2">{item.value}</div>
+                          <div className="text-sm text-muted-foreground">{item.label}</div>
+                      </div>
+                  ))}
+              </div>
           </div>
-        </div>
+
       </div>
     </section>
   );

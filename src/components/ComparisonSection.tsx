@@ -1,12 +1,12 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { Check, X, Crown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 export const ComparisonSection = () => {
   const features = [
     {
       feature: "Turnaround Time",
-      neuskale: "24-48 hours standard",
+      neuskale: "24-72 hours standard",
       competitors: "3-5 business days",
       advantage: true
     },
@@ -55,7 +55,7 @@ export const ComparisonSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-subtle">
+    <section className="py-4 bg-gradient-subtle">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-primary/20">
@@ -125,7 +125,7 @@ export const ComparisonSection = () => {
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">2x Faster</h3>
               <p className="text-muted-foreground text-sm">
-                Get your reports in 24-48 hours while competitors take 3-5 business days
+                Get your reports in 24-72 hours while competitors take 3-5 business days
               </p>
             </CardContent>
           </Card>
@@ -166,12 +166,21 @@ export const ComparisonSection = () => {
               are switching to Neuskale for faster, more accurate title searches.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="hero" size="lg">
-                Get Free Sample Report
-              </Button>
-              <Button variant="outline" size="lg">
-                Compare Pricing
-              </Button>
+                <Button
+                    variant="outline"
+                    size="lg"
+                    onClick={() => {
+                        const section = document.getElementById("Order");
+                        if (section) {
+                            section.scrollIntoView({ behavior: "smooth" });
+                        }
+                    }}
+                >
+                    Get Complimentary Search Report
+                </Button>
+              {/*<Button variant="outline" size="lg">*/}
+              {/*  Compare Pricing*/}
+              {/*</Button>*/}
             </div>
           </div>
         </div>

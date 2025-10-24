@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "../components/ui/card";
 import { FileText, Search, Mail } from "lucide-react";
 
 export const ProcessSection = () => {
@@ -19,7 +19,7 @@ export const ProcessSection = () => {
       number: "3",
       icon: Mail,
       title: "Receive Your Report",
-      description: "Your complete title search report is delivered to your email within 24-48 business hours, ready for review and action."
+      description: "Your complete title search report is delivered to your email within 24-72 hours, ready for review and action."
     }
   ];
 

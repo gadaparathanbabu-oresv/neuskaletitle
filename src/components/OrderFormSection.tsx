@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -47,23 +47,29 @@ export const OrderFormSection = () => {
     const handleStateChange = (value: string) => {
         setSelectedState(value);
         setSelectedCounty("");
-        setSelectedService("");
-        setRate(0);
+        setSelectedService(""); // reset service
     };
 
     const handleCountyChange = (value: string) => {
         setSelectedCounty(value);
-        setSelectedService("");
-        setRate(0);
+        setSelectedService(""); // reset service
     };
 
     const handleServiceChange = (value: string) => {
         setSelectedService(value);
-        if (selectedState && selectedCounty) {
-            const countyData = feesData[selectedState][selectedCounty];
-            setRate(countyData[value] ?? 0);
-        }
     };
+
+    // Auto-calculate rate whenever state, county, or service changes
+    // Recalculate rate whenever state, county, or service changes
+    useEffect(() => {
+        if (selectedState && selectedCounty && selectedService) {
+            const countyData = feesData[selectedState][selectedCounty];
+            setRate(countyData[selectedService] ?? 0);
+        } else {
+            setRate(0); // hide estimated total until user selects all
+        }
+    }, [selectedState, selectedCounty, selectedService]);
+
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -86,7 +92,7 @@ export const OrderFormSection = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:5000/send-order", {
+            const res = await fetch("https://neuskaletitle-peach.vercel.app/api/send-order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),
@@ -120,6 +126,7 @@ export const OrderFormSection = () => {
     };
 
     return (
+    <div id="Order">
         <section className="py-20 bg-muted/30">
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
@@ -178,6 +185,7 @@ export const OrderFormSection = () => {
                             <div className="space-y-2">
                                 <Label htmlFor="service">Select Service *</Label>
                                 <Select
+                                    value={selectedService} // bind value
                                     onValueChange={handleServiceChange}
                                     disabled={!selectedCounty}
                                 >
@@ -194,13 +202,14 @@ export const OrderFormSection = () => {
                                 </Select>
                             </div>
 
+
                             {/* RATE DISPLAY */}
                             <div className="bg-primary/10 border border-primary/20 rounded-lg p-4">
                                 <div className="flex justify-between items-center">
                                     <span className="font-semibold">Estimated Total:</span>
                                     <span className="text-2xl font-bold text-primary">
-                    {rate > 0 ? `$${rate}` : "$0"}
-                  </span>
+                                        {rate > 0 ? `$${rate}` : "$0"}
+                                    </span>
                                 </div>
                             </div>
 
@@ -213,9 +222,9 @@ export const OrderFormSection = () => {
                                         "email",
                                         "phone",
                                         "company",
-                                        "propertyaddress",
-                                        "parcelnumber",
-                                        "ownername",
+                                        "property Address",
+                                        "parcel Number",
+                                        "owner Name",
                                         "comments",
                                     ].map((field) => (
                                         <div key={field} className="space-y-2">
@@ -248,9 +257,15 @@ export const OrderFormSection = () => {
                                 Place Order – Secure Checkout
                             </Button>
                         </form>
+                        <br/>
+                        <p className="text-justify text-sm text-black">**The fees listed are based on online search availability. If any files require ground abstractor support, an additional abstractor fee will apply for conducting the search or retrieving documents. Any fee changes will be communicated, and your approval will be obtained before we proceed with the search.</p> <br/>
+                        <p className="text-justify text-sm text-black">**For judgments and liens, we provide online copies or docket sheets. If any judgment or lien copies are not available online and you require those copies, an additional abstractor fee will apply to obtain them. All such fees will be communicated in advance, and your approval will be obtained before we proceed with the search.</p>
                     </Card>
+
                 </div>
             </div>
+
         </section>
+    </div>
     );
 };

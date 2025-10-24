@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { ArrowRight, Calendar, BookOpen } from "lucide-react";
 
 export const BlogSection = () => {
@@ -115,34 +115,34 @@ export const BlogSection = () => {
         </div>
 
         {/* Categories */}
-        <Card className="max-w-4xl mx-auto border-primary/20">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
-              Browse by Topic
-            </h3>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                "Real Estate Investing",
-                "Title Law & Compliance",
-                "Technology & Automation",
-                "Title Curative",
-                "State Regulations",
-                "Best Practices",
-                "Case Studies",
-                "Industry News"
-              ].map((category, idx) => (
-                <Button 
-                  key={idx}
-                  variant="outline" 
-                  size="sm"
-                  className="hover:bg-primary hover:text-primary-foreground"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        {/*<Card className="max-w-4xl mx-auto border-primary/20">*/}
+        {/*  <CardContent className="p-8">*/}
+        {/*    <h3 className="text-2xl font-bold text-foreground mb-6 text-center">*/}
+        {/*      Browse by Topic*/}
+        {/*    </h3>*/}
+        {/*    <div className="flex flex-wrap justify-center gap-3">*/}
+        {/*      {[*/}
+        {/*        "Real Estate Investing",*/}
+        {/*        "Title Law & Compliance",*/}
+        {/*        "Technology & Automation",*/}
+        {/*        "Title Curative",*/}
+        {/*        "State Regulations",*/}
+        {/*        "Best Practices",*/}
+        {/*        "Case Studies",*/}
+        {/*        "Industry News"*/}
+        {/*      ].map((category, idx) => (*/}
+        {/*        <Button */}
+        {/*          key={idx}*/}
+        {/*          variant="outline" */}
+        {/*          size="sm"*/}
+        {/*          className="hover:bg-primary hover:text-primary-foreground"*/}
+        {/*        >*/}
+        {/*          {category}*/}
+        {/*        </Button>*/}
+        {/*      ))}*/}
+        {/*    </div>*/}
+        {/*  </CardContent>*/}
+        {/*</Card>*/}
 
         {/* Newsletter Signup */}
         <div className="mt-12 max-w-3xl mx-auto">
