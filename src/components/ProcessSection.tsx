@@ -24,7 +24,7 @@ export const ProcessSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-background">
+      <section className="py-20 bg-gradient-to-br from-[#f8fafc] via-[#eef2ff] to-[#e0f2fe]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-bold mb-4">How It Works</h2>
@@ -35,7 +35,7 @@ export const ProcessSection = () => {
         
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {steps.map((step, index) => (
-            <Card key={index} className="relative transition-all duration-300 hover:shadow-professional">
+            <Card key={index} className="relative bg-gradient-to-br from-white to-primary/10 border border-primary/20 shadow-md hover:shadow-xl transition-all duration-300">
               <CardContent className="pt-12 pb-8 text-center">
                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
                   <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-xl font-bold shadow-button">

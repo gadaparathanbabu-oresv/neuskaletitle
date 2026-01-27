@@ -67,7 +67,7 @@ export const TestimonialsSection = () => {
             Client Success Stories
           </div>
           <h2 className="text-3xl lg:text-5xl font-bold mb-4 text-foreground">
-            Real Results from Real Professionals
+              Where Expertise Meets Results
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             See how attorneys, title companies, lenders, and investors have transformed their 

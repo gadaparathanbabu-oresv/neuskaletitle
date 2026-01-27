@@ -47,11 +47,10 @@ export const PricingSection = () => {
   ];
 
   const additionalServices = [
-    "Commercial Title Search",
-    "Title Curative Services",
     "Customized Report Formats",
-    "Bulk/Portfolio Orders (Special Pricing)",
-    "Rush Services Available",
+    "Title Examination Services",
+    "Expedite Delivery Services Available",
+    "Discounts available on bulk orders",
     "State-Specific Searches"
   ];
 

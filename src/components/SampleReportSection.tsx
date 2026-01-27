@@ -16,6 +16,7 @@ export const SampleReportSection = () => {
       description: "Example foreclosure search with complete chain of title",
       pages: "15-20 pages",
       icon: FileText,
+      file: "/Sample Search Report - Two Owner Search.pdf", // link to file in public folder
 
     },
     {
